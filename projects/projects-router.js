@@ -5,7 +5,7 @@ const Actions = require('../data/helpers/actionModel.js');
 
 const router = express.Router();
 
-// Uses routing endpoint '/' to return a list of projects from the
+// Returns a list of projects from the database at the
 // 'http://localhost:5000/api/projects' url.
 router.get('/', async (req, res) => {
     try {
@@ -19,3 +19,24 @@ router.get('/', async (req, res) => {
         });
     }
 });
+
+// Finds a specific project in the database by it's id and returns 
+// that single project from the 'http://localhost:5000/api/projects' url.
+router.get('/:id', async (req, res) => {
+    try {
+        const project = await Projects.get(req.params.id);
+        if (project) {
+            res.status(200).json(project);
+        } else {
+            res.status(404).json({ message: 'The project requested was not found' });
+        }
+    } catch (error) {
+        // logs error to the database
+        console.log(error);
+        res.status(500).json({ 
+            message: 'Error retrieving the project; step your happiness-game up first'
+        });
+    }
+});
+
+
