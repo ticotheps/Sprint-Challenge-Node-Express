@@ -6,7 +6,7 @@ const Actions = require('../data/helpers/actionModel.js');
 const router = express.Router();
 
 // Returns a list of projects from the database at the
-// 'http://localhost:5000/api/projects' url.
+// 'http://localhost:5000/api/projects' url
 router.get('/', async (req, res) => {
     try {
         const projects = await Projects.get(req.query);
@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 });
 
 // Finds a specific project in the database by it's id and returns 
-// that single project from the 'http://localhost:5000/api/projects' url.
+// that single project from the 'http://localhost:5000/api/projects' url
 router.get('/:id', async (req, res) => {
     try {
         const project = await Projects.get(req.params.id);
@@ -40,7 +40,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Finds a specific project in the database by it's id and returns 
-// a list of the actions for that specific project from the 'http://localhost:5000/api/projects' url.
+// a list of the actions for that specific project from the 'http://localhost:5000/api/projects' url
 router.get('/:id/actions', async (req, res) => {
     try {
         const actions = await Projects.getProjectActions(req.params.id);
@@ -51,6 +51,20 @@ router.get('/:id/actions', async (req, res) => {
         console.log(error);
         res.status(500).json({ 
             message: 'Error retrieving the actions for the specified project; perhaps you are not smiling enough'
+        });
+    }
+});
+
+// Adds a new project to the database
+router.post('/', async (req, res) => {
+    try {
+        const project = await Projects.insert(req.body);
+        res.status(200).json(project);
+    } catch (error) {
+        // logs error to the database
+        console.log(error);
+        res.status(500).json({ 
+            message: 'Error adding the new project'
         });
     }
 });
