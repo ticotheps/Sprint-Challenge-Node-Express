@@ -14,6 +14,7 @@ server.use(helmet());
 
 // routing
 server.use('/api/projects', projectsRouter);
+server.use('/api/actions', actionsRouter);
 
 server.get('/', async (req, res) => {
     try {
