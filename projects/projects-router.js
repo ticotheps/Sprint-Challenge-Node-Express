@@ -27,9 +27,9 @@ router.get('/', async (req, res) => {
 // that single project from the 'http://localhost:5000/api/projects' url
 router.get('/:id', async (req, res) => {
     try {
-        const project = await Projects.get(req.params.id);
-        if (project) {
-            res.status(200).json(project);
+        const projectId = await Projects.get(req.params.id);
+        if (projectId) {
+            res.status(200).json(projectId);
         } else {
             res.status(404).json({ message: 'The project requested was not found' });
         }

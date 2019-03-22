@@ -10,7 +10,7 @@ const router = express.Router();
 // 'http://localhost:5000/api/projects' url
 router.get('/', async (req, res) => {
     try {
-        const actions = await Actions.get(req.query);
+        const actions = await Actions.get(req.query.url);
         res.status(200).json(actions);
     } catch (error) {
         // logs error to the database
