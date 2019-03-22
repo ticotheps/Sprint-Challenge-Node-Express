@@ -2,8 +2,6 @@ const express = require('express');
 const helmet = require('helmet');
 
 const apiRouter = require('./api/api-router.js');
-// const projectsRouter = require('./projects/projects-router.js');
-// const actionsRouter = require('./actions/actions-router.js');
 
 const db = require('./data/dbConfig.js');
 
