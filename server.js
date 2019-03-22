@@ -16,49 +16,56 @@ server.use(helmet());
 server.use('/api/projects', projectsRouter);
 server.use('/api/actions', actionsRouter);
 
-server.get('/', async (req, res) => {
-    try {
-        const projects = await db('projects');
-        res.status(200).json({ greeting: `${process.env.GREETING}`, projects});
-    } catch (error) {
-        console.log('\nERROR', error);
-        res.status(500).json({ error: 'Cannot retrieve the projects because Luis said you worry too much!' });
-    }
-});
+server.get('/', (req, res) => {
+    res.send(`
+      <h1>Welcome to Tico's Node.js/Express Sprint Challenge API!</h1>
+      <h2>Don't worry. Be happy!</h2>
+      `);
+  });
 
-server.post('/', async (req, res) => {
-    try {
-        const [id] = await db('projects').insert(req.body);
-        const projects = await db('projects');
+// server.get('/', async (req, res) => {
+//     try {
+//         const projects = await db('projects');
+//         res.status(200).json({ greeting: `${process.env.GREETING}`, projects});
+//     } catch (error) {
+//         console.log('\nERROR', error);
+//         res.status(500).json({ error: 'Cannot retrieve the projects because Luis said you worry too much!' });
+//     }
+// });
 
-        res.status(201).json(projects);
-    } catch (error) {
-        console.log('\nError', error);
-        res.status(500).json({ error: 'Cannot add the project; there is not enough swagger in it' });
-    }
-});
+// server.post('/', async (req, res) => {
+//     try {
+//         const [id] = await db('projects').insert(req.body);
+//         const projects = await db('projects');
 
-server.get('/', async (req, res) => {
-    try {
-        const actions = await db('actions');
-        res.status(200).json({ greeting: `${process.env.GREETING}`, actions});
-    } catch (error) {
-        console.log('\nERROR', error);
-        res.status(500).json({ error: 'Cannot retrieve the actions because Luis said you worry too much!' });
-    }
-});
+//         res.status(201).json(projects);
+//     } catch (error) {
+//         console.log('\nError', error);
+//         res.status(500).json({ error: 'Cannot add the project; there is not enough swagger in it' });
+//     }
+// });
 
-server.post('/', async (req, res) => {
-    try {
-        const [id] = await db('actions').insert(req.body);
-        const actions = await db('actions');
+// server.get('/', async (req, res) => {
+//     try {
+//         const actions = await db('actions');
+//         res.status(200).json({ greeting: `${process.env.GREETING}`, actions});
+//     } catch (error) {
+//         console.log('\nERROR', error);
+//         res.status(500).json({ error: 'Cannot retrieve the actions because Luis said you worry too much!' });
+//     }
+// });
 
-        res.status(201).json(actions);
-    } catch (error) {
-        console.log('\nError', error);
-        res.status(500).json({ error: 'Cannot add the action; there is not enough swagger in it' });
-    }
-});
+// server.post('/', async (req, res) => {
+//     try {
+//         const [id] = await db('actions').insert(req.body);
+//         const actions = await db('actions');
+
+//         res.status(201).json(actions);
+//     } catch (error) {
+//         console.log('\nError', error);
+//         res.status(500).json({ error: 'Cannot add the action; there is not enough swagger in it' });
+//     }
+// });
 
 
 
