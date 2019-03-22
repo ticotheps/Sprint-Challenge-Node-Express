@@ -1,4 +1,4 @@
-const express = require('require');
+const express = require('express');
 const helmet = require('helmet');
 
 const projectsRouter = require('./projects/projects-router.js');
