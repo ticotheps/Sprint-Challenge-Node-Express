@@ -26,13 +26,23 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+        Two parts of Express that I learned about this week are 'middleware' and 'routing'.
+
 - [ ] Describe Middleware?
+
+        Middleware is simply a function (or an array of funcions) that stand in the line of communication between the client and the server. You can think of the middleware as the "bouncer" between you and the night club you'd like to enter. This middleware gets executed in a top-down fashion, so the order in which these functions appear in code ACTUALLY does matter. We learned about three different kinds of middleware this week: built-in middleware, third party middleware, and custom middleware.
 
 - [ ] Describe a Resource?
 
+        A 'resource' is essentially something that our app cares to manage. Such examples of 'resources' might include: users,passwords, or even hobbits! Resources are organized by their 'URL' on the internet, which stands for 'Uniform Resource Locator'. 
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+        APIs can return HTTP status codes to help clients know if a request was successful or unsuccessful.
+
 - [ ] How can we partition our application into sub-applications?
+
+        Using 'routing', we can partition our application into sub-applications, similarly to how we can separate a react app into components. It makes the code more modular and easy to read.
 
 ## Project Setup
 
